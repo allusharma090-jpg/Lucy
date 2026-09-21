@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>For Lucy ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
+
+.box {
+    background: white;
+    width: 85%;
+    max-width: 400px;
+    padding: 30px;
+    border-radius: 25px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+
+h1 {
+    color: #ff3f6c;
+}
+
+#message {
+    font-size: 20px;
+    min-height: 60px;
+}
+
+button {
+    border: none;
+    background: #ff3f6c;
+    color: white;
+    padding: 14px 25px;
+    border-radius: 30px;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.emoji {
+    position: absolute;
+    font-size: 30px;
+    animation: fall 5s linear infinite;
+}
+
+@keyframes fall {
+    from {
+        transform: translateY(-100px);
+    }
+    to {
+        transform: translateY(110vh);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+    <h1>Hey Lucy 😈❤️</h1>
+
+    <p id="message">
+        Lucy... 👀<br>
+        I have something to tell you...
+    </p>
+
+    <button onclick="irritate()">
+        DON'T CLICK 😏
+    </button>
+</div>
+
+<script>
+
+let messages = [
+    "Why did you click it? 😂",
+    "I told you DON'T CLICK 😭😂",
+    "Lucy is officially trapped 😈❤️",
+    "Okay okay... one more click 👀",
+    "You really can't resist, can you? 😂",
+    "Fine... I miss you 🥹❤️",
+    "Now go drink some water 😤😂",
+    "Okay bye... 👋",
+    "WAIT! COME BACK 😭❤️"
+];
+
+let i = 0;
+
+function irritate() {
+    document.getElementById("message").innerHTML =
+        messages[i];
+
+    i++;
+
+    if (i >= messages.length) {
+        i = 0;
+    }
+
+    createEmoji();
+}
+
+function createEmoji() {
+    let emoji = document.createElement("div");
+
+    let emojis = ["❤️", "😂", "😈", "👀", "😭", "✨", "💖"];
+
+    emoji.className = "emoji";
+    emoji.innerHTML =
+        emojis[Math.floor(Math.random() * emojis.length)];
+
+    emoji.style.left =
+        Math.random() * 100 + "vw";
+
+    emoji.style.animationDuration =
+        (2 + Math.random() * 4) + "s";
+
+    document.body.appendChild(emoji);
+
+    setTimeout(() => {
+        emoji.remove();
+    }, 6000);
+}
+
+</script>
+
+</body>
+</html>
+
